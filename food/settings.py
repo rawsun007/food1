@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3@^2+-oa#85!fmn+vvt181cnik9!z94j1k&$ck7lvuomam+1ad
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -79,10 +79,16 @@ WSGI_APPLICATION = 'food.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import os
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'railway'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'RTempVjUwmPLQblrbKdeArLLulrwOeBC'),
+        'HOST': os.environ.get('DB_HOST', 'roundhouse.proxy.rlwy.net'),
+        'PORT': os.environ.get('DB_PORT', '31744'),
     }
 }
 

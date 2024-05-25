@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -62,7 +64,7 @@
                   ></span>
                 </div>
                 {% if messages %}
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-success" role="alert">
                   {% for message in messages %} {{ message }} {% endfor %}
                 </div>
                 {% endif %}
