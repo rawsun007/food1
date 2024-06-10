@@ -9,6 +9,7 @@ from django.shortcuts import HttpResponse, redirect, render
 from .models import *
 
 
+
 @login_required(login_url="/login_page/")
 def add(request):
     if request.method == 'POST':
@@ -149,3 +150,16 @@ def signup(request):
     
     return render(request, "signup.html")
 
+
+from django.core.mail import send_mail
+
+
+def test_email(request):
+    send_mail(
+        'bhai ',
+        'chage password ',
+        'test007.for.web@gmail.com',
+        ['roshanramani.dev@gmail.com'],
+        fail_silently=False,
+    )
+    return HttpResponse("Email sent")

@@ -17,9 +17,10 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path
-from recipe import views as food_views  # Import views from food app
+from recipe import views as food_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +32,22 @@ urlpatterns = [
     path('logout_page/', food_views.logout_page, name='logout_page'),
     path('signup/', food_views.signup, name='signup'),
     path('home/', food_views.home, name='home'),
+    
+    
+    
+    
+    path('test_email/', food_views.test_email, name='test_email'),
+
+    
+
+    
+   path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'), name='password_reset'),
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
+    
+
+    
+    
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

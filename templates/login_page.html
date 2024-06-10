@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>login</title>
     <style>
       /* Preloader Styles */
         .preloader-overlay {
@@ -29,7 +28,7 @@
         }
 
         .preloader {
-          background: #000 url(/static/temp/images/lg.gif) center
+          background: #000 url(/static/assets/images/lg.gif) center
           border: 8px solid #f3f3f3; /* Light grey */
           border-top: 8px solid #3498db; /* Blue */
           border-radius: 50%;
@@ -52,118 +51,142 @@
         #content {
           display: none;
         }
+
+                .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+             body {
+            background-image: url('/static/assets/images/bg3.jpg');
+            background-size: cover; /* Make sure the image covers the entire background */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-position: center center; /* Center the image */
+            height: 100vh; /* Ensure the body takes up the full height of the viewport */
+            margin: 0; /* Remove default margin */
+        }
     </style>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <title>Free Stylish Login Page Website assetslate | Smarteyeapps.com</title>
 
+    <link rel="shortcut icon" href="/static/assets/images/fav.jpg" />
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/fontawsom-all.min.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
       rel="stylesheet"
+      type="text/css"
+      href="/static/assets/css/style.css"
     />
-
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <link rel="stylesheet" href="/static/temp/css/style.css" />
   </head>
-  <body
-    class="img js-fullheight"
-    style="background-image: url(/static/temp/images/bg2.jpg)"
-  >
+
+  <body>
     <div class="preloader-overlay">
       <div class="preloader-container">
         <div class="preloader"></div>
       </div>
     </div>
-    <div id="content">
-      <section class="ftco-section">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-              <h2 class="heading-section">Login For Recipes</h2>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-              <div class="login-wrap p-0">
-                <h3 class="mb-4 text-center">Have an account?</h3>
+
+    <div class="container">
+      <div id="content">
+        <div class="container-fluid">
+          <div class="no-pdding login-box">
+            <div class="row no-margin w-100 bklmj">
+              <div class="col-lg-6 col-md-6 log-det">
+                <h2>Login</h2>
+
+                <div class="row no-margin past">
+                  <p>
+                    Already have an account? <span>Click below for login:</span>
+                  </p>
+                </div>
                 <form action="#" class="signin-form" method="post">
                   {% csrf_token %}
 
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Username"
-                      name="username"
-                      required
-                    />
-                  </div>
-                  <div class="form-group">
-                    <input
-                      id="password-field"
-                      type="password"
-                      class="form-control"
-                      placeholder="Password"
-                      name="password"
-                      required
-                    />
-                    <span
-                      toggle="#password-field"
-                      class="fa fa-fw fa-eye field-icon toggle-password"
-                    ></span>
-                  </div>
-                  {% if messages %}
-                  <div class="alert alert-danger" role="alert">
-                    {% for message in messages %} {{ message }} {% endfor %}
-                  </div>
-                  {% endif %}
-                  <div class="form-group">
-                    <button
-                      type="submit"
-                      class="form-control btn btn-primary submit px-3"
-                    >
-                      Sign In
-                    </button>
-                  </div>
-                  <div class="form-group d-md-flex">
-                    <div class="w-50">
-                      <label class="checkbox-wrap checkbox-primary"
-                        >Remember Me
-                        <input type="checkbox" checked />
-                        <span class="checkmark"></span>
-                      </label>
+                  <div class="text-box-cont">
+                    <div class="input-group mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        name="username"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+                    <div class="input-group mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        name="password"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                      />
+                    </div>
+
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                      {% for message in messages %} {{ message }} {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="row no-margin">
+                      {% comment %}
+                      <a href="/password_reset/">
+                        <p class="forget-p">Forget Password ?</p>
+                      </a>
+                      {% endcomment %} {% comment %}
+                      <p class="forget-p">Let's Cook</p>
+                      {% endcomment %}
+                    </div>
+                    <div class="right-bkij mb-3">
+                      <button class="btn btn-success btn-round">sign In</button>
+                    </div>
+                    <br />
+                    <div class="row linkoi">
+                      <div class="col-sm-5"></div>
+                      <div class="col-sm-7"></div>
                     </div>
                   </div>
                 </form>
-                <a href="/signup/">
-                  <p class="w-100 text-center">
-                    &mdash; Don't have an account? &mdash;
+              </div>
+
+              <div class="col-lg-6 col-md-6 box-de">
+                <div class="ditk-inf">
+                  <h2 class="w-100">Welcome Back</h2>
+                  <p>
+                    Simply Create your account by <br />
+                    clicking the Signup Button
                   </p>
-                </a>
+                  <a href="/signup/">
+                    <button type="button" class="btn btn-outline-light">
+                      Sign Up
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-          document.querySelector(".preloader-overlay").style.display = "none";
-          document.getElementById("content").style.display = "block";
-        }, 3000);
-      });
-    </script>
-    <script src="/static/temp/js/jquery.min.js"></script>
-    <script src="/static/temp/js/popper.js"></script>
-    <script src="/static/temp/js/bootstrap.min.js"></script>
-    <script src="/static/temp/js/main.js"></script>
   </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(function () {
+        document.querySelector(".preloader-overlay").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 3000);
+    });
+  </script>
+
+  <script src="/static/assets/js/jquery-3.2.1.min.js"></script>
+  <script src="/static/assets/js/popper.min.js"></script>
+  <script src="/static/assets/js/bootstrap.min.js"></script>
+  <script src="/static/assets/js/script.js"></script>
 </html>
