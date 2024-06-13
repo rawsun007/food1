@@ -154,6 +154,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'test007.for.web@gmail.com'
 EMAIL_HOST_PASSWORD = 'rovu wuvj xsqb rcqs'
+DEFAULT_FROM_EMAIL = 'test007.for.web@gmail.com'
 
 
 
