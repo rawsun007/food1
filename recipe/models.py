@@ -8,3 +8,5 @@ class fastfood(models.Model):
     name=models.TextField(max_length=100)
     about=models.TextField(max_length=200)
     img=models.ImageField(upload_to="media")
+
+
