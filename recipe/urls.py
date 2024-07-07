@@ -16,20 +16,23 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from django.urls import include, path
+from django.urls import path
+from recipe import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
 
-    path('recipe/', include('recipe.urls')),
+    path('delete_re/<int:id>/', views.delete_re, name='delete_re'), 
+    path('add/', views.add, name='add'),
+    path('update_re/<int:id>/', views.update_re, name='update_re'), 
+    path('login_page/', views.login_page, name='login_page'),
+    path('logout_page/', views.logout_page, name='logout_page'),
+    path('signup/', views.signup, name='signup'),
+    path('home/', views.home, name='home'),
+    path('recipe_list/', views.recipe_list, name='recipe_list'),
+    path('user_pro/', views.user_pro, name='user_pro'),
+     
     
     
-    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'), name='password_reset'),
-    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
     
     
 
