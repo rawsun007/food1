@@ -18,4 +18,3 @@ application = get_wsgi_application()
 app=application
 
 
-# this is for reulid
