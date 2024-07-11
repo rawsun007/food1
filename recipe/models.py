@@ -13,9 +13,9 @@ class SavedRecipe(models.Model):
     recipe_label = models.CharField(max_length=500)
     recipe_url = models.URLField(max_length=2000)
     recipe_image = models.URLField(max_length=2000, null=True, blank=True)
-    meal_type = models.CharField(max_length=1000, null=True, blank=True)  # Adjusted max_length
-    cuisine_type = models.CharField(max_length=1000, null=True, blank=True)  # Adjusted max_length
-    source = models.CharField(max_length=1000, null=True, blank=True)  # Adjusted max_length
+    meal_type = models.CharField(max_length=1000, null=True, blank=True) 
+    cuisine_type = models.CharField(max_length=1000, null=True, blank=True)  
+    source = models.CharField(max_length=1000, null=True, blank=True)  
 
     def __str__(self):
         return self.recipe_label

@@ -376,12 +376,15 @@
               </a>
               <div class="" id="">
                 <div class="User_option">
+                  <a href="/recipe/home/">
+                    <span>Recipes Created by {{request.user.first_name}}</span>
+                  </a>
+                  <a href="/recipe/user_pro/">
+                    <span>Saved Recipes</span>
+                  </a>
                   <a href="{% url 'logout_page' %}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span>Logout</span>
-                  </a>
-                  <a href="/home/">
-                    <span>Home</span>
                   </a>
                 </div>
               </div>
@@ -412,7 +415,7 @@
                                 class="form-control"
                                 id="inputHotel"
                                 name="Search"
-                                placeholder="Search Recipes by Name"
+                                placeholder="Search Recipes Your by Name"
                               />
                             </div>
 
@@ -492,6 +495,17 @@
         </section>
       </div>
 
+      <div
+        class="container"
+        style="
+          text-align: center;
+          font-family: 'Times New Roman', serif;
+          color: #5854ec;
+        "
+      >
+        <h2>Recipes Prepared By You</h2>
+      </div>
+
       <div class="main">
         <ul class="cards">
           {% for item in queryset %}
@@ -526,7 +540,7 @@
         {% if messages %}
         <div class="alert alert-danger" role="alert">
           {% for message in messages %} {{ message }} {% endfor %}
-          <a href="/home/" class="btn btn-success">try another recipe</a>
+          <a href="/recipe/home/" class="btn btn-success">try another recipe</a>
         </div>
 
         {% endif %}

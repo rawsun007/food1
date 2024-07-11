@@ -1,21 +1,3 @@
-{% comment %} 
-    <ul>
-      {% for recipe in saved_recipes %}
-      <li>
-        <img src="{{ recipe.recipe_image }}" alt="Recipe Image" />
-        <h2>{{ recipe.recipe_label }}</h2>
-        <p>Meal: {{ recipe.meal_type }}</p>
-        <p>Cuisine: {{ recipe.cuisine_type }}</p>
-        <p>Author: {{ recipe.source }}</p>
-        <a href="{{ recipe.recipe_url }}">Go to Recipe</a>
-      </li>
-      {% endfor %}
-    </ul>
- {% endcomment %}
-
-
-
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -398,7 +380,7 @@
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span>Logout</span>
                   </a>
-                  <a href="/home/">
+                  <a href="/recipe/home/">
                     <span>Home</span>
                   </a>
                 </div>
@@ -509,104 +491,99 @@
           </div>
         </section>
       </div>
-      
-   {% comment %} <ul>
-      {% for recipe in saved_recipes %}
-      <li>
-        <img src="{{ recipe.recipe_image }}" alt="Recipe Image" />
-        <h2>{{ recipe.recipe_label }}</h2>
-        <p>Meal: {{ recipe.meal_type }}</p>
-        <p>Cuisine: {{ recipe.cuisine_type }}</p>
-        <p>Author: {{ recipe.source }}</p>
-        <a href="{{ recipe.recipe_url }}">Go to Recipe</a>
-      </li>
-      {% endfor %}
-    </ul {% endcomment %}
-<div class="main">
-    <ul class="cards">
-        {% for recipe in queryset %}
-            <li class="cards_item">
-                <div class="card">
-                    <div class="card_image">
-                        <img src="{{ recipe.recipe_image }}" alt="Recipe Image" />
-                    </div>
-                    <h2 class="card_title">{{ recipe.recipe_label }}</h2>
-                    <div class="card_content">
-                        <div class="card_text">
-                            <p>Meal: {{ recipe.meal_type }}</p>
-                            <p>Cuisine: {{ recipe.cuisine_type }}</p>
-                            <p>Author: {{ recipe.source }}</p>
-                            <a href="{{ recipe.recipe_url }}">
-                                <button class="btn delete-btn btn-danger">Go to recipe</button>
-                            </a>
-                            <hr />
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <a href="{% url 'delete_re' recipe.id %}">
-                            <button class="btn delete-btn btn-success">Delete</button>
-                        </a>
-                        <a href="{% url 'update_re' recipe.id %}">
-                            <button class="btn update-btn btn-success">Update</button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
-<div>
-    {% if messages %}
-    <div class="alert alert-danger" role="alert">
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-        <a href="/home/" class="btn btn-success">Try another recipe</a>
-    </div>
-    {% endif %}
-</div>
-{% if queryset.has_other_pages %}
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        {% if queryset.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page=1">&laquo; First</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?page={{ queryset.previous_page_number }}">Previous</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <span class="page-link">&laquo; First</span>
-        </li>
-        <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-        </li>
-        {% endif %}
-        <li class="page-item">
-            <span class="current page-link">
-                Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
-            </span>
-        </li>
-        {% if queryset.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ queryset.next_page_number }}">Next</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="?page={{ queryset.paginator.num_pages }}">Last &raquo;</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <span class="page-link">Next</span>
-        </li>
-        <li class="page-item disabled">
-            <span class="page-link">Last &raquo;</span>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
-{% endif %}
 
+      <div class="main">
+        <ul class="cards">
+          {% for recipe in queryset %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_image">
+                <img src="{{ recipe.recipe_image }}" alt="Recipe Image" />
+              </div>
+              <h2 class="card_title">{{ recipe.recipe_label }}</h2>
+              <div class="card_content">
+                <div class="card_text">
+                  <p>Meal: {{ recipe.meal_type }}</p>
+                  <p>Cuisine: {{ recipe.cuisine_type }}</p>
+                  <p>Author: {{ recipe.source }}</p>
+                  <a href="{{ recipe.recipe_url }}">
+                    <button class="btn update-btn btn-primary">
+                      Go to recipe
+                    </button>
+                  </a>
+                  <hr />
+                </div>
+              </div>
+              <div class="button-container">
+                <a href="{% url 'delete_re' recipe.id %}">
+                  <button class="btn delete-btn btn-danger">Delete</button>
+                </a>
+                <a href="{% url 'update_re' recipe.id %}">
+                  <button class="btn update-btn btn-success">Update</button>
+                </a>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+          {% for message in messages %} {{ message }} {% endfor %}
+          <a href="/home/" class="btn btn-success">Try another recipe</a>
+        </div>
+        {% endif %}
+      </div>
+      {% if queryset.has_other_pages %}
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if queryset.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1">&laquo; First</a>
+          </li>
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="?page={{ queryset.previous_page_number }}"
+              >Previous</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">&laquo; First</span>
+          </li>
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          {% endif %}
+          <li class="page-item">
+            <span class="current page-link">
+              Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+            </span>
+          </li>
+          {% if queryset.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ queryset.next_page_number }}"
+              >Next</a
+            >
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ queryset.paginator.num_pages }}"
+              >Last &raquo;</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next</span>
+          </li>
+          <li class="page-item disabled">
+            <span class="page-link">Last &raquo;</span>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      {% endif %}
 
       <section class="about_section layout_padding">
         <div class="container">
